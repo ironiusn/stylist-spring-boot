@@ -1,0 +1,141 @@
+swagger: "2.0"
+info:
+  description: "Stylist booking service"
+  version: "0.0.1"
+  title: "Stylist"
+basePath: "/api/v1"
+tags:
+- name: "stylist"
+  description: "stylist information"
+- name: "calendar"
+  description: "customer stylist appointment"
+schemes:
+- "https"
+- "http"
+paths:
+  /stylists:
+    post:
+      tags:
+      - "stylist"
+      summary: "add a new stylist"
+      description: ""
+      operationId: "addStylist"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "new stylist object"
+        required: true
+        schema:
+          $ref: "#/definitions/Stylist"
+      responses:
+        201:
+          description: "created object"
+          schema:
+            type: "integer"
+            format: "int64"    
+        405:
+          description: "invalid Input"
+    get:
+      tags:
+      - "stylist"
+      summary: "get list of stylists"
+      description: ""
+      operationId: "getStylists"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "OK"
+          schema: 
+            type: array
+            items: 
+              $ref: '#/definitions/Stylist'
+  /appointments/{startDate}:
+    get:
+      tags:
+      - "calendar"
+      summary: "get all appointments"
+      description: ""
+      operationId: "getAppointments"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "startDate"
+        in: "path"
+        description: "search for appointments starts since that timestamp"
+        required: true
+        type: "string"
+        format: "date-time"
+      responses:
+        200:
+          description: "all appointments"
+          schema: 
+            type: array
+            items: 
+              $ref: '#/definitions/Appointment'
+  /timeslots/{startDate}:
+    get:
+      tags:
+      - "calendar"
+      summary: "get all available timeslots"
+      description: ""
+      operationId: "getTimeslots"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "startDate"
+        in: "path"
+        description: "search for timeslots starts since that timestamp"
+        required: true
+        type: "string"
+        format: "date-time"
+      responses:
+        200:
+          description: "all available timeslots"
+          schema: 
+            type: array
+            items: 
+              $ref: '#/definitions/TimeSlot'
+definitions:
+  Stylist:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      email:
+        type: "string"
+  Appointment:
+    type: "object"
+    properties:
+      stylistId:
+        type: "integer"
+        format: "int64"
+      customerId:
+        type: "integer"
+        format: "int64"
+      timeSlotId:
+        type: "integer"
+        format: "int64"
+  TimeSlot:
+    type: "object"
+    properties:
+      timeSlotId:
+        type: "integer"
+        format: "int64"
+      stylistId:
+        type: "integer"
+        format: "int64"
+      startTime:
+        type: "string"
+        format: "date-time"
+      endTime:
+        type: "string"
+        format: "date-time"
+        

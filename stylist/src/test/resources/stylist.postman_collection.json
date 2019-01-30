@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "stylist",
+		"_postman_id": "c7e82124-6bae-3c98-379b-028fa3274824",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addStylist",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "addStylist",
+			"request": {
+				"url": "http://localhost:8080/stylists",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"POST test\",\n\t\"email\": \"POST test email\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

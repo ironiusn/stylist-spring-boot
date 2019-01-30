@@ -1,0 +1,8 @@
+{
+  "library": "spring-mvc",
+  "dateLibrary":"java8",
+  "hideGenerationTimestamp":true,
+  "modelPackage": "com.spinalski.stylist.model",
+  "apiPackage":"com.spinalski.stylist.api",
+  "invokerPackage":"com.spinalski.stylist"
+}
